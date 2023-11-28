@@ -22,16 +22,16 @@ console.log(day)
 const day2 = new Date().getDay()
 console.log(day2)
 
-switch(5){
+switch(2, 3){
   case 1:
     console.log("It's MOnday")
     break;
   case 2:
     console.log("It's Tuesday")
-    break;
+   
   case 3:
     console.log("It's Wednesday") 
-    break;
+    
   case 4:
     console.log("It's Thursday")
     break;
@@ -76,12 +76,15 @@ const person2 = {
   };
 
 // Solution Here:
+// dot notation
 console.log(person2.teams[1].soccer[0])
+// bracket notation
 console.log(person2["teams"][1]["soccer"][0])
 
 // JS Object methods ((Object.keys(object), Object.values(object))
 console.log(Object.keys(person2))
 console.log(Object.values(person2))
+console.log(person2["name"])
 
 // looping an object using for in
 // for in: iterates over keys in object or indices in an array
@@ -165,7 +168,7 @@ fetch('https://pokeapi.co/api/v2/pokemon/ditto')
 // viewing our data if promise resolved: 200 status code
 
 // Second way: Using async/await (ES6)
-const pokemonData = async () => {()
+const pokemonData = async () => {
   const response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto') 
   const data = await response.json()
   console.log(data)

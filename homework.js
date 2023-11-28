@@ -1,8 +1,7 @@
 console.log('test')
 //========== Exercise #1 ===========//
 /*
-Write a function that parses through the below object and displays all of their
-favorite food dishes as shown:
+Write a function that parses through the below object and displays all of their favorite food dishes as shown:
 */
 
 let person3 = {
@@ -19,27 +18,48 @@ let person3 = {
     }]
 }
 
+
 function favFood(person3) {
-    for (let dish in person3) {
+    for (let values in person3) {
+    
+     if (Array.isArray(person3[values])) {
 
-        if (Array.isArray(person3[dish])) {
-            console.log(`${dish}: ${person3[dish].join(', ')}`);
+        for (i=0; i<person3[values].length; i++) {
+            if (typeof person3[values][i] === "object"){
 
-        } else if (typeof person3[dish] === 'object') {
-            console.log(`${dish}:`);
-
-            for (let value in person3[key][0]) {
-                console.log(`${value}: ${person3[dish][0][value]}`);
+        for (let place in person3[values][i]) {
+            console.log(person3[values][i][place]);
             }
-
-        } else {
-            console.log(`${dish}: ${person3[dish]}`);
-        }
+        }else{console.log(person3[values][i])}
     }
-};
-
+        } else {
+        console.log(person3[values])
+     }
+    }
+}
 favFood(person3);
 
+// Hard coding testing parsing understanding
+// console.log(person3.pizza[0])
+// console.log(person3["pizza"][1])
+// console.log(person3.tacos)
+// console.log(person3["burgers"])
+// console.log(person3.ice_cream[0])
+// console.log(person3["ice_cream"][1])
+// console.log(person3.ice_cream[2])
+// console.log(person3["shakes"][0]["oberwise"])
+// console.log(person3.shakes[0].dunkin)
+// console.log(person3["shakes"][0]["culvers"])
+// console.log(person3.shakes[0]["mcDonalds"])
+// console.log(person3["shakes"][0]["cupids_candies"])
+
+// How to reach keys and values (in-class)
+// console.log(Object.keys(person3))
+// console.log(Object.values(person3))
+
+// Adding some logic to the to get the keys in shakes
+// console.log(Object.keys(person3["shakes"][0]))
+// console.log(Object.values(person3["shakes"][0]))
 
 
 //======= Exercise #2=========//
@@ -59,30 +79,30 @@ class Person{
         this.age = age
     }
     // Use an arrow to create the printInfo method
-    printInfo = () => `${this.name} is ${this.age}.`
+    printInfo = () => `${this.name} is ${this.age}.`;
 
     // Create another arrow function for the addAge method that takes a single parameter
     addAge = () => this.age = this.age +1;
 } 
 
-// Adding to the age 
-const someone = new Person('Ronnie', 35)
-someone.addAge()
-console.log(someone.printInfo())
-someone.addAge()
-console.log(someone.printInfo())
-someone.addAge()
-console.log(someone.printInfo())
-someone.addAge()
-console.log(someone.printInfo())
+// Adding to the age each year
+const someone = new Person('Ronnie', 35);
+someone.addAge();
+console.log(someone.printInfo());
+someone.addAge();
+console.log(someone.printInfo());
+someone.addAge();
+console.log(someone.printInfo());
+someone.addAge();
+console.log(someone.printInfo());
 
-
+//adding the age by 3 years
 const someone1 = new Person('Aaron', 29)
-console.log(someone1.printInfo())
-someone1.addAge()
-someone1.addAge()
-someone1.addAge()
-console.log(someone1.printInfo())
+console.log(someone1.printInfo());
+someone1.addAge();
+someone1.addAge();
+someone1.addAge();
+console.log(someone1.printInfo());
 
 
 // ============= Exercise #3 ============//
@@ -97,7 +117,7 @@ const ergastData = async () => {
     const data = await response.json();
     console.log(data)
 }
-ergastData()
+ergastData();
 
 
 // Then/Catch way
@@ -113,15 +133,16 @@ fetch('http://ergast.com/api/f1/2008/5/driverStandings.json')
 })
 
 
-
-// // CodeWars 1
-// Reversed Words
-// Complete the solution so that it reverses all of the words within the string passed in.
-// Words are separated by exactly one space and there are no leading or trailing spaces.
+/* CodeWars 1
+Reversed Words
+Complete the solution so that it reverses all of the words within the string passed in.
+Words are separated by exactly one space and there are no leading or trailing spaces.
+*/
 
 function reverseWords(str){
     return str.split(' ').reverse().join(' ')
   }
+
 
 // Codewars 2
 // Sum without highest and lowest number
@@ -137,3 +158,4 @@ function sumArray(array) {
     .slice(1, -1)
     .reduce((sum, num) => sum += num, 0);
   }
+
